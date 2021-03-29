@@ -1,1 +1,1 @@
-ng build --prod --output-path C:\Users\kevim\PycharmProject\docker-commander\static\gui --base-href /gui/
+ng build --prod --output-path gui --base-href /gui/
