@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4"><h3>Containers</h3></div>
+    <div class="col-6">
+      <select [(ngModel)]="filterValue">
+        <option value="">All</option>
+        <option *ngFor="let state of states" bind-value="state" bind-innerText="state"></option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col container-element-title">Name</div>
+    <div class="col container-element-title">State</div>
+    <div class="col container-element-title">Ports</div>
+    <div class="col-1 container-element-title">Action</div>
+  </div>
+  <div *ngFor="let container of containers| simpleFilter : 'State' : filterValue " class="row container-element">
+    <div class="col">
+      <span bind-innerText="container.Image"></span>
+    </div>
+    <div class="col">
+      <span bind-innerText="container.Status"></span>
+    </div>
+    <div class="col">
+      <span bind-innerText="getPorts(container)"></span>
+    </div>
+    <div class="col-1">
+      <button class="btn btn-info" *ngIf="container.State === 'exited'" (click)="start(container.Id)">
+        <fa-icon [icon]="faPlay"></fa-icon>
+      </button>
+      <button class="btn btn-info" *ngIf="container.State === 'running'" (click)="stop(container.Id)">
+        <fa-icon [icon]="faStop"></fa-icon>
+      </button>
+    </div>
+
+  </div>
+
+</div>

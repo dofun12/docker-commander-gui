@@ -1,0 +1,7 @@
+.container-element{
+  padding: 10px;
+  border: 1px solid #eee;
+}
+.container-element-title{
+  font-weight: bold;
+}
